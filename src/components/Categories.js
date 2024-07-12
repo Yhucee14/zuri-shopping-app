@@ -2,17 +2,17 @@ import React, { useState, useEffect } from 'react';
 import ReactSlider from 'react-slider';
 import './Categories.css'; 
 import search from "../assets/search.png";
-import hamburger from "../assets/ham.png"; // Add an icon for the hamburger menu
+import hamburger from "../assets/ham.png";
 import { useDispatch } from 'react-redux';
 import { cartActions } from '../store/cart-slice';
 import bandagebrown from "../assets/plasterbrown.png";
 import plaster from "../assets/plaster.png";
-import colors from '../assets/colors.png'
-import colorbandages from '../assets/colorbandage.png'
-import cutwhite from '../assets/cutwhite.png'
-import bud from '../assets/bud.png'
-import cloth from '../assets/cloth.png'
-import drink from '../assets/drink.png'
+import colors from '../assets/colors.png';
+import colorbandages from '../assets/colorbandage.png';
+import cutwhite from '../assets/cutwhite.png';
+import bud from '../assets/bud.png';
+import cloth from '../assets/cloth.png';
+import drink from '../assets/drink.png';
 
 const PRODUCTS_DATABASE = [
   {
@@ -165,15 +165,15 @@ const Categories = () => {
   };
 
   return (
-    <div className='px-4 md:px-14 flex flex-row'>
-      <button onClick={toggleMenu} className="md:hidden">
+    <div className='px-4 md:px-14 flex flex-row relative'>
+      <button onClick={toggleMenu} className="block md:hidden absolute top-0 left-0 z-50">
         <img src={hamburger} alt="Menu" className="h-6 w-6" />
       </button>
       
-      <div className={`md:w-1/4 pr-4 ${menuOpen ? 'block' : 'hidden'} md:block`}>
+      <div className={`absolute top-0 left-0 w-4/5 md:w-1/4 h-full bg-white z-40 transform ${menuOpen ? 'translate-x-0' : '-translate-x-full'} transition-transform duration-300 md:relative md:transform-none md:block md:pr-4`}>
         <div className='py-2 mb-6'>
           <label className='block mb-2 text-sm font-medium text-gray-700'>Category</label>
-          {['electronics', 'clothing', 'home', 'sports', 'toys'].map((category) => (
+          {['Adhesive bandages', 'bandages', 'electronics'].map((category) => (
             <div className='py-1' key={category}>
               <label>
                 <input
@@ -227,7 +227,7 @@ const Categories = () => {
         </div>
       </div>
 
-      <div className='w-full md:w-3/4 py-2'>
+      <div className='w-full md:w-3/4 py-2 md:ml-4'>
         <div className='flex justify-between mb-4'>
           <div className='relative w-1/2 pr-2'>
             <input
