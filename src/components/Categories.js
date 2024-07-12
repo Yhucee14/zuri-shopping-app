@@ -13,6 +13,8 @@ import cutwhite from '../assets/cutwhite.png';
 import bud from '../assets/bud.png';
 import cloth from '../assets/cloth.png';
 import drink from '../assets/drink.png';
+import { Link } from 'react-router-dom';
+import blueright from "../assets/blueright.png";
 
 const PRODUCTS_DATABASE = [
   {
@@ -165,12 +167,12 @@ const Categories = () => {
   };
 
   return (
-    <div className='px-4 md:px-14 flex flex-row relative'>
-      <button onClick={toggleMenu} className="block md:hidden absolute top-0 left-0 z-50">
-        <img src={hamburger} alt="Menu" className="h-6 w-6" />
+    <div className='px-4 md:px-10 md:flex md:flex-row relative'>
+      <button onClick={toggleMenu} className="block md:hidden py-2 z-50">
+        <img src={hamburger} alt="Menu" className="h-8 w-8" />
       </button>
       
-      <div className={`absolute top-0 left-0 w-4/5 md:w-1/4 h-full bg-white z-40 transform ${menuOpen ? 'translate-x-0' : '-translate-x-full'} transition-transform duration-300 md:relative md:transform-none md:block md:pr-4`}>
+      <div className={`absolute top-10 px-4 h-auto rounded-md  py-2 left-0 xx:w-[70%] sm:w-[45%] md:w-1/4 bg-white z-40 transform ${menuOpen ? 'translate-x-0' : '-translate-x-full'} transition-transform duration-300 md:relative md:transform-none md:block md:pr-4`}>
         <div className='py-2 mb-6'>
           <label className='block mb-2 text-sm font-medium text-gray-700'>Category</label>
           {['Adhesive bandages', 'bandages', 'electronics'].map((category) => (
@@ -228,7 +230,7 @@ const Categories = () => {
       </div>
 
       <div className='w-full md:w-3/4 py-2 md:ml-4'>
-        <div className='flex justify-between mb-4'>
+        <div className='hidden sm:visible sm:flex justify-between mb-4'>
           <div className='relative w-1/2 pr-2'>
             <input
               type="text"
@@ -285,7 +287,15 @@ const Categories = () => {
             <div>No products found</div>
           )}
         </div>
+
+        <Link to="/categories" className="flex justify-end py-5">
+          <button className="text-deepBlue rounded-md flex py-2 px-2 flex-row">
+            <div className="px-2">Browse new channels</div>
+            <img src={blueright} alt="Logo" className="h-5 w-5 mt-1" />
+          </button>
+        </Link>
       </div>
+
     </div>
   );
 };
