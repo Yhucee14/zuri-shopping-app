@@ -3,8 +3,7 @@ import ReactSlider from 'react-slider';
 import './Categories.css'; 
 import search from "../assets/search.png";
 import hamburger from "../assets/ham.png";
-import { useDispatch } from 'react-redux';
-import { cartActions } from '../store/cart-slice';
+// import { useDispatch } from 'react-redux';
 import bandagebrown from "../assets/plasterbrown.png";
 import plaster from "../assets/plaster.png";
 import colors from '../assets/colors.png';
@@ -24,6 +23,7 @@ const PRODUCTS_DATABASE = [
     price: 500,
     rating: 4.5,
     category: "Adhesive bandages",
+    desc: 'Adhesive bandages for injuries'
   },
   {
     id: 2,
@@ -32,6 +32,7 @@ const PRODUCTS_DATABASE = [
     price: 4000,
     rating: 4,
     category: "bandages",
+     desc: 'Adhesive bandages for injuries'
   },
   {
     id: 3,
@@ -40,6 +41,7 @@ const PRODUCTS_DATABASE = [
     price: 3000,
     rating: 3.5,
     category: "bandages",
+     desc: 'Adhesive bandages for injuries'
   },
   {
     id: 4,
@@ -48,6 +50,7 @@ const PRODUCTS_DATABASE = [
     price: 5000,
     rating: 2.5,
     category: "electronics",
+     desc: 'Adhesive bandages for injuries'
   },
   {
     id: 5,
@@ -56,6 +59,7 @@ const PRODUCTS_DATABASE = [
     price: 500,
     rating: 4.5,
     category: "Adhesive bandages",
+     desc: 'Adhesive bandages for injuries'
   },
   {
     id: 6,
@@ -64,6 +68,7 @@ const PRODUCTS_DATABASE = [
     price: 4000,
     rating: 4,
     category: "bandages",
+     desc: 'Adhesive bandages for injuries'
   },
   {
     id: 7,
@@ -72,6 +77,7 @@ const PRODUCTS_DATABASE = [
     price: 3000,
     rating: 3.5,
     category: "bandages",
+     desc: 'Adhesive bandages for injuries'
   },
   {
     id: 8,
@@ -80,6 +86,7 @@ const PRODUCTS_DATABASE = [
     price: 5000,
     rating: 2.5,
     category: "electronics",
+     desc: 'Adhesive bandages for injuries'
   },
 ];
 
@@ -92,7 +99,7 @@ const priceRanges = [
 ];
 
 const Categories = () => {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
   const [searchTerm, setSearchTerm] = useState('');
   const [priceRange, setPriceRange] = useState([0, Infinity]);
@@ -172,7 +179,7 @@ const Categories = () => {
         <img src={hamburger} alt="Menu" className="h-8 w-8" />
       </button>
       
-      <div className={`absolute top-10 px-4 h-auto rounded-md  py-2 left-0 xx:w-[70%] sm:w-[45%] md:w-1/4 bg-white z-40 transform ${menuOpen ? 'translate-x-0' : '-translate-x-full'} transition-transform duration-300 md:relative md:transform-none md:block md:pr-4`}>
+      <div className={`absolute top-10 px-4 h-auto rounded-md  py-2 left-0 xx:w-[70%] sm:w-[45%] md:w-1/4 bg-white  transform ${menuOpen ? 'translate-x-0' : '-translate-x-full'} transition-transform duration-300 md:relative md:transform-none md:block md:pr-4`}>
         <div className='py-2 mb-6'>
           <label className='block mb-2 text-sm font-medium text-gray-700'>Category</label>
           {['Adhesive bandages', 'bandages', 'electronics'].map((category) => (
@@ -274,8 +281,13 @@ const Categories = () => {
                       {Array(5 - Math.round(product.rating)).fill('☆').join('')}
                     </div>
                     <button
-                      onClick={() => dispatch(cartActions.addToCart(product))}
-                      className='bg-[#1D1D1D] text-[#E4E7E9] py-1 px-2 font-medium hover:bg-[#E4E7E9] hover:text-[#1D1D1D] rounded-lg'
+                      // onClick={() => dispatch(cartActions.addToCart(product))}
+                      className='bg-[#1D1D1D] snipcart-add-item text-[#E4E7E9] py-1 px-2 font-medium hover:bg-[#E4E7E9] hover:text-[#1D1D1D] rounded-lg'
+                      data-item-id={product.id}
+                      data-item-price={product.price}
+                      data-item-description={product.desc}
+                      data-item-image={product.imgURL}
+                      data-item-name={product.name}
                     >
                       Add to cart
                     </button>
@@ -287,7 +299,7 @@ const Categories = () => {
             <div>No products found</div>
           )}
         </div>
-
+i
         <Link to="/categories" className="flex justify-end py-5">
           <button className="text-deepBlue rounded-md flex py-2 px-2 flex-row">
             <div className="px-2">Browse new channels</div>
